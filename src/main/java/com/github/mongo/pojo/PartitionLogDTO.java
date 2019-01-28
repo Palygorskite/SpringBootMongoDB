@@ -6,6 +6,8 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
+ * 2.1.2 之后引用对象前面要加@
+ *
  * <p>
  * 创建时间为 下午2:38-2019/1/15
  * 项目名称 SpringBootMongoDB
@@ -17,7 +19,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 
 @Data
-@Document(collection = "#{cname.getCollectionName()}")
+@Document(collection = "#{@cname.getCollectionName()}")
 public class PartitionLogDTO {
 
     @Id
