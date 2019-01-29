@@ -50,7 +50,6 @@ public class GridFsResourceDao {
         return null;
     }
 
-
     public String delete(String fileName) {
         operations.delete(new Query(where("filename").is(fileName)));
         return null;

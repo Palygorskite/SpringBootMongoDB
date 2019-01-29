@@ -19,11 +19,11 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration("cname")
-public class CollectionName {
+public class CollectionNameConfig {
 
     public String getCollectionName() {
         DateTime dateTime = DateTime.now();
-        System.out.println("CollectionName:getCollectionName");
+        System.out.println("CollectionNameConfig:getCollectionName");
         return dateTime.toString("yyyy-MM-dd HH:mm");
     }
 
