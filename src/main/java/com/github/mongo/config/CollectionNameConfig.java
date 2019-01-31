@@ -24,7 +24,8 @@ public class CollectionNameConfig {
     public String getCollectionName() {
         DateTime dateTime = DateTime.now();
         System.out.println("CollectionNameConfig:getCollectionName");
-        return dateTime.toString("yyyy-MM-dd HH:mm");
+//        return dateTime.toString("yyyy-MM-dd HH:mm");
+        return "yyyy-MM-dd HH:mm";
     }
 
 }

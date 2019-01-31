@@ -16,4 +16,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 
 public interface PartitionLogRepository extends PagingAndSortingRepository<PartitionLogDTO, String> {
+
 }
