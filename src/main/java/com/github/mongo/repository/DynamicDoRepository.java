@@ -1,11 +1,11 @@
 package com.github.mongo.repository;
 
-import com.github.mongo.pojo.DotDTO;
+import com.github.mongo.pojo.DynamicDO;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  * <p>
- * 创建时间为 上午10:02-2019/1/29
+ * 创建时间为 19:48-2019-02-18
  * 项目名称 SpringBootMongoDB
  * </p>
  *
@@ -15,6 +15,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 
 
-public interface DotDtoRepository extends PagingAndSortingRepository<DotDTO, String> {
+public interface DynamicDoRepository extends PagingAndSortingRepository<DynamicDO, String> {
+
+
 
 }

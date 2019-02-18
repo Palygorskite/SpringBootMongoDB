@@ -29,11 +29,11 @@ import javax.persistence.GeneratedValue;
 
 
 @Component
-public class SaveEventListenerConfig<E> extends AbstractMongoEventListener<E> {
+public class ConfigSaveEventListener<E> extends AbstractMongoEventListener<E> {
 
     private final MongoTemplate mongoTemplate;
 
-    public SaveEventListenerConfig(MongoTemplate mongoTemplate) {
+    public ConfigSaveEventListener(MongoTemplate mongoTemplate) {
         this.mongoTemplate = mongoTemplate;
     }
 

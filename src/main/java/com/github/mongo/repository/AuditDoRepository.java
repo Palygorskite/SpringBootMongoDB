@@ -1,11 +1,11 @@
 package com.github.mongo.repository;
 
-import com.github.mongo.pojo.SimpleLogDO;
+import com.github.mongo.pojo.AuditDO;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  * <p>
- * 创建时间为 上午10:35-2019/1/15
+ * 创建时间为 20:01-2019-02-18
  * 项目名称 SpringBootMongoDB
  * </p>
  *
@@ -15,7 +15,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 
 
-public interface SimpleLogRepository extends PagingAndSortingRepository<SimpleLogDO, String> {
-
-
+public interface AuditDoRepository extends PagingAndSortingRepository<AuditDO, String> {
 }

@@ -21,11 +21,11 @@ import javax.annotation.PostConstruct;
  */
 
 @Configuration
-public class MongoDotConverterConfig {
+public class ConfigMongoDotConverter {
 
     private final MappingMongoConverter mongoConverter;
 
-    public MongoDotConverterConfig(MappingMongoConverter mongoConverter) {
+    public ConfigMongoDotConverter(MappingMongoConverter mongoConverter) {
         this.mongoConverter = mongoConverter;
     }
 

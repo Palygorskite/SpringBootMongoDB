@@ -17,8 +17,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Getter
 @Setter
-@Document(collection = "DotDtoRepository")
-public class DotDTO {
+@Document(collection = "DotDoRepository")
+public class DotDO {
 
     private String ip;
 

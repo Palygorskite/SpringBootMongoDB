@@ -17,8 +17,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
  */
 
 
-@Document(collection = "sequence")
 @Data
+@Document(collection = "sequence")
 public class SeqInfo {
 
     @Id
@@ -30,7 +30,5 @@ public class SeqInfo {
     @Field
     private Long seqId;
 
-    public SeqInfo() {
-    }
 
 }

@@ -4,9 +4,6 @@ import org.joda.time.DateTime;
 import org.springframework.context.annotation.Configuration;
 
 
-
-
-
 /**
  * <p>
  * 创建时间为 下午2:33-2019/1/15
@@ -19,13 +16,10 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration("cname")
-public class CollectionNameConfig {
+public class ConfigDynamicCollection {
 
     public String getCollectionName() {
-        DateTime dateTime = DateTime.now();
-        System.out.println("CollectionNameConfig:getCollectionName");
-//        return dateTime.toString("yyyy-MM-dd HH:mm");
-        return "yyyy-MM-dd HH:mm";
+        return DateTime.now().toString("yyyy-MM-dd HH:mm");
     }
 
 }

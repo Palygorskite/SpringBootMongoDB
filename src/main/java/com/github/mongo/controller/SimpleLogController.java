@@ -1,10 +1,17 @@
 package com.github.mongo.controller;
 
-import com.github.mongo.pojo.SimpleLogDTO;
-import com.github.mongo.service.SimpleLogService;
+import com.github.mongo.pojo.SimpleLogDO;
+import com.github.mongo.repository.SimpleLogRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -20,10 +27,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SimpleLogController {
 
-    private final SimpleLogService service;
+    @Resource
+    private SimpleLogRepository repository;
 
-    public SimpleLogController(SimpleLogService service) {
-        this.service = service;
+    @GetMapping("/simplelog")
+    public Page<SimpleLogDO> get(@PageableDefault(size = 4, page = 1, sort = "id,asc") Pageable pageable) {
+        return repository.findAll(pageable);
     }
 
     /**
@@ -33,8 +42,22 @@ public class SimpleLogController {
      * @return 被保存的对象, 注意 ID
      */
     @PostMapping("/simplelog")
-    public SimpleLogDTO save(@RequestBody SimpleLogDTO simpleLogDTO) {
-        return service.save(simpleLogDTO);
+    public SimpleLogDO save(@RequestBody SimpleLogDO simpleLogDTO) {
+        return repository.save(simpleLogDTO);
+    }
+
+
+    @PostConstruct
+    public void init() {
+        for (int i = 0; i < 100; i++) {
+            String data = "data:" + i;
+            SimpleLogDO simpleLogDO = new SimpleLogDO();
+            simpleLogDO.setMessage(data);
+            simpleLogDO.setField(data);
+            repository.save(simpleLogDO);
+        }
+
+
     }
 
 

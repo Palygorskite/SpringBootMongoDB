@@ -1,16 +1,16 @@
 package com.github.mongo.pojo;
 
-
 import com.alibaba.fastjson.JSON;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
 
 /**
  * <p>
- * 创建时间为 下午2:24-2019/1/31
+ * 创建时间为 下午5:16-2019/1/31
  * 项目名称 SpringBootMongoDB
  * </p>
  *
@@ -20,16 +20,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
  */
 
 
-@Getter
 @Setter
-@Document(collection = "UserFluxDTO")
-public class UserFluxDTO {
+@Getter
+@Document(collection = "CappedDO")
+public class CappedDO {
 
     @Id
     private String id;
 
-    @Indexed
-    private String name;
+    private Date date;
+
+    public CappedDO(Date date) {
+        this.date = date;
+    }
 
     @Override
     public String toString() {

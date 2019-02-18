@@ -1,6 +1,6 @@
 package com.github.mongo.service;
 
-import com.github.mongo.pojo.SimpleLogDTO;
+import com.github.mongo.pojo.SimpleLogDO;
 import com.github.mongo.repository.SimpleLogRepository;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ public class SimpleLogService {
         this.repository = repository;
     }
 
-    public SimpleLogDTO save(SimpleLogDTO mongoLogsDTO) {
+    public SimpleLogDO save(SimpleLogDO mongoLogsDTO) {
         return repository.save(mongoLogsDTO);
     }
 

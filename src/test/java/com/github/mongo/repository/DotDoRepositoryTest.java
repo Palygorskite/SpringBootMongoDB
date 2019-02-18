@@ -1,6 +1,6 @@
 package com.github.mongo.repository;
 
-import com.github.mongo.pojo.DotDTO;
+import com.github.mongo.pojo.DotDO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +21,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DotDtoRepositoryTest {
+public class DotDoRepositoryTest {
 
     @Autowired
-    private DotDtoRepository repository;
+    private DotDoRepository repository;
 
     @Test
     public void save() {
-        DotDTO dot = new DotDTO();
+        DotDO dot = new DotDO();
         dot.setIp("1.1.1.3");
         repository.save(dot);
     }

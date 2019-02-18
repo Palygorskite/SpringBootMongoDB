@@ -14,7 +14,7 @@ import lombok.Data;
  */
 
 @Data
-public class GridFsResourceDTO {
+public class GridFsResourceDO {
 
     /**
      * 文件的名称

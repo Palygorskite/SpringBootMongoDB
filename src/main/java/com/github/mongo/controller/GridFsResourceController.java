@@ -1,6 +1,6 @@
 package com.github.mongo.controller;
 
-import com.github.mongo.pojo.GridFsResourceDTO;
+import com.github.mongo.pojo.GridFsResourceDO;
 import com.github.mongo.service.GridFsResourceService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,7 +27,7 @@ public class GridFsResourceController {
     }
 
     @PostMapping("gridfs")
-    public String save(@RequestBody GridFsResourceDTO dto) {
+    public String save(@RequestBody GridFsResourceDO dto) {
         return service.save(dto.getName(), dto.getPath());
     }
 

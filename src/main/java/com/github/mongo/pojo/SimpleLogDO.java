@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.annotation.Version;
 import org.springframework.data.mongodb.core.index.CompoundIndex;
 import org.springframework.data.mongodb.core.index.CompoundIndexes;
@@ -13,7 +14,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
-
 
 /**
  * <p>
@@ -27,16 +27,16 @@ import java.util.Date;
  */
 
 @Data
-@Document(collection = "ComplexLogDTO")
+@Document(collection = "SimpleLogDO")
 @CompoundIndexes({
-    @CompoundIndex(name = "index", def = "{'id':1,'name':1}")
+    @CompoundIndex(name = "index", def = "{'message':1,'field':1}")
 })
-public class ComplexLogDTO {
+public class SimpleLogDO {
 
     @Id
-    @Field("user_id")
-    private String userID;
+    private String id;
 
+    @Field("desc")
     private String message;
 
     private String field;
@@ -47,19 +47,28 @@ public class ComplexLogDTO {
      * 60 秒之后过期
      */
     @Indexed(name = "ttl", expireAfterSeconds = 60)
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date expire;
 
     @CreatedDate
     @Field("created_date")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createdDate;
 
     @LastModifiedDate
     @Field("last_modified_date")
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastModifiedDate;
 
+    /**
+     * 被 {@link Transient} 标记的字段将不会保存到数据库中
+     */
+    @Transient
+    private Long temp;
+
+    /**
+     * 版本号
+     */
     @Version
     private Long version;
 

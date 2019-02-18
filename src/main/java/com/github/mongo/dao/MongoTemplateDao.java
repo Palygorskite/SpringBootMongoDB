@@ -1,6 +1,6 @@
 package com.github.mongo.dao;
 
-import com.github.mongo.pojo.SimpleLogDTO;
+import com.github.mongo.pojo.SimpleLogDO;
 import com.mongodb.client.result.UpdateResult;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Query;
@@ -30,9 +30,9 @@ public class MongoTemplateDao {
         this.mongoTemplate = mongoTemplate;
     }
 
-    public List<SimpleLogDTO> updateAll() {
+    public List<SimpleLogDO> updateAll() {
         Update update = new Update();
-        UpdateResult result = mongoTemplate.updateMulti(new Query(), update, SimpleLogDTO.class);
+        UpdateResult result = mongoTemplate.updateMulti(new Query(), update, SimpleLogDO.class);
         return null;
     }
 

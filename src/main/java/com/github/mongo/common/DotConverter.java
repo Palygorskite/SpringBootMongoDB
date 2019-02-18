@@ -1,4 +1,4 @@
-package com.github.mongo.pojo;
+package com.github.mongo.common;
 
 /**
  * <p>
@@ -12,7 +12,7 @@ package com.github.mongo.pojo;
  */
 
 
-public class DotConverterEnum {
+public class DotConverter {
 
     public static final String DOT = "\\.";
 

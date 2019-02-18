@@ -27,7 +27,7 @@ import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
  */
 
 @Configuration
-public class MongoClassConfig {
+public class ConfigMongoClass {
 
     @Bean
     @SneakyThrows(NoSuchBeanDefinitionException.class)

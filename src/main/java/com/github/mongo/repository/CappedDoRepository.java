@@ -1,11 +1,11 @@
 package com.github.mongo.repository;
 
-import com.github.mongo.pojo.PartitionLogDTO;
+import com.github.mongo.pojo.CappedDO;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 /**
  * <p>
- * 创建时间为 下午2:39-2019/1/15
+ * 创建时间为 19:39-2019-02-18
  * 项目名称 SpringBootMongoDB
  * </p>
  *
@@ -15,6 +15,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  */
 
 
-public interface PartitionLogRepository extends PagingAndSortingRepository<PartitionLogDTO, String> {
-
+public interface CappedDoRepository extends PagingAndSortingRepository<CappedDO, String> {
 }

@@ -1,15 +1,17 @@
 package com.github.mongo.pojo;
 
-import lombok.Data;
+import com.alibaba.fastjson.JSON;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 /**
- * 2.1.2 之后引用对象前面要加@
- *
  * <p>
- * 创建时间为 下午2:38-2019/1/15
+ * 创建时间为 19:46-2019-02-18
  * 项目名称 SpringBootMongoDB
  * </p>
  *
@@ -18,14 +20,23 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @since 0.0.1
  */
 
-@Data
+@Getter
+@Setter
 @Document(collection = "#{@cname.getCollectionName()}")
-public class PartitionLogDTO {
+public class DynamicDO {
 
     @Id
     private String id;
 
     @Indexed
-    private String name;
+    private Date date;
 
+    public DynamicDO(Date date) {
+        this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
+    }
 }
