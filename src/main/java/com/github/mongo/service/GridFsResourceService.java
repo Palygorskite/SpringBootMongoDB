@@ -3,6 +3,8 @@ package com.github.mongo.service;
 import com.github.mongo.dao.GridFsResourceDao;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * <p>
  * 创建时间为 上午10:54-2019/1/15
@@ -17,11 +19,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class GridFsResourceService {
 
-    private final GridFsResourceDao resourceDao;
-
-    public GridFsResourceService(GridFsResourceDao resourceDao) {
-        this.resourceDao = resourceDao;
-    }
+    @Resource
+    private GridFsResourceDao resourceDao;
 
     public String save(String name, String path) {
         return resourceDao.save(name, path);

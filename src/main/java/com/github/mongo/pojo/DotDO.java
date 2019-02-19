@@ -1,5 +1,6 @@
 package com.github.mongo.pojo;
 
+import com.alibaba.fastjson.JSON;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -21,5 +22,10 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class DotDO {
 
     private String ip;
+
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
+    }
 
 }

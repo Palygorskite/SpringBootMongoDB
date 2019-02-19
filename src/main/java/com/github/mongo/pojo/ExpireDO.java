@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,7 +22,8 @@ import java.util.Date;
  * @since 0.0.1
  */
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @Document(collection = "ExpireDO")
 public class ExpireDO {
@@ -33,8 +36,6 @@ public class ExpireDO {
     @Indexed(name = "ttl", expireAfterSeconds = 7)
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date expire;
-
-
 
     @Override
     public String toString() {

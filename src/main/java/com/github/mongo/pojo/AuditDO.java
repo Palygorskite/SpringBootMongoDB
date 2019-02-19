@@ -3,6 +3,8 @@ package com.github.mongo.pojo;
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.annotation.Transient;
@@ -23,12 +25,10 @@ import java.util.Date;
  * @since 0.0.1
  */
 
-@Data
+@Getter
+@Setter
 @Document(collection = "AuditDO")
 public class AuditDO {
-
-
-
 
     @CreatedDate
     @Field("created_date")

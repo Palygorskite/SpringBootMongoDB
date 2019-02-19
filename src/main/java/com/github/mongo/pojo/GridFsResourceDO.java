@@ -1,6 +1,8 @@
 package com.github.mongo.pojo;
 
-import lombok.Data;
+import com.alibaba.fastjson.JSON;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * <p>
@@ -13,7 +15,10 @@ import lombok.Data;
  * @since 0.0.1
  */
 
-@Data
+
+
+@Getter
+@Setter
 public class GridFsResourceDO {
 
     /**
@@ -26,4 +31,8 @@ public class GridFsResourceDO {
      */
     private String path;
 
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
+    }
 }

@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+
 /**
  * <p>
  * 创建时间为 上午10:54-2019/1/15
@@ -20,11 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GridFsResourceController {
 
-    private final GridFsResourceService service;
-
-    public GridFsResourceController(GridFsResourceService service) {
-        this.service = service;
-    }
+    @Resource
+    private GridFsResourceService service;
 
     @PostMapping("gridfs")
     public String save(@RequestBody GridFsResourceDO dto) {

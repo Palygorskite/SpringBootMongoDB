@@ -4,6 +4,8 @@ import com.github.mongo.pojo.SimpleLogDO;
 import com.github.mongo.repository.SimpleLogRepository;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
 /**
  * <p>
  * 创建时间为 上午10:37-2019/1/15
@@ -18,11 +20,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class SimpleLogService {
 
-    private final SimpleLogRepository repository;
-
-    public SimpleLogService(SimpleLogRepository repository) {
-        this.repository = repository;
-    }
+    @Resource
+    private SimpleLogRepository repository;
 
     public SimpleLogDO save(SimpleLogDO mongoLogsDTO) {
         return repository.save(mongoLogsDTO);

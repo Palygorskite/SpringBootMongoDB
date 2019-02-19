@@ -47,7 +47,6 @@ public class SimpleLogController {
         return repository.save(simpleLogDTO);
     }
 
-
     @PostConstruct
     public void init() {
         int num = 100;

@@ -1,7 +1,9 @@
 package com.github.mongo.pojo;
 
+import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -26,7 +28,9 @@ import java.util.Date;
  * @since 0.0.1
  */
 
-@Data
+
+@Getter
+@Setter
 @Document(collection = "SimpleLogDO")
 @CompoundIndexes({
     @CompoundIndex(name = "index", def = "{'message':1,'field':1}")
@@ -72,4 +76,8 @@ public class SimpleLogDO {
     @Version
     private Long version;
 
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
+    }
 }

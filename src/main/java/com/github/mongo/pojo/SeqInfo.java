@@ -1,6 +1,8 @@
 package com.github.mongo.pojo;
 
-import lombok.Data;
+import com.alibaba.fastjson.JSON;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -17,7 +19,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
  */
 
 
-@Data
+@Getter
+@Setter
 @Document(collection = "sequence")
 public class SeqInfo {
 
@@ -30,5 +33,9 @@ public class SeqInfo {
     @Field
     private Long seqId;
 
+    @Override
+    public String toString() {
+        return JSON.toJSONString(this);
+    }
 
 }

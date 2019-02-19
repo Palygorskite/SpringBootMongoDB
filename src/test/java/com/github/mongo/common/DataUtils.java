@@ -32,8 +32,7 @@ public class DataUtils {
 
         Random rdint = new Random();
         int index = rdint.nextInt(10);
-        String ip = num2ip(range[index][0] + new Random().nextInt(range[index][1] - range[index][0]));
-        return ip;
+        return num2ip(range[index][0] + new Random().nextInt(range[index][1] - range[index][0]));
     }
 
     public static String num2ip(int ip) {
@@ -44,8 +43,7 @@ public class DataUtils {
         b[1] = (ip >> 16) & 0xff;
         b[2] = (ip >> 8) & 0xff;
         b[3] = ip & 0xff;
-        x = Integer.toString(b[0]) + "." + Integer.toString(b[1]) + "." + Integer.toString(b[2]) + "." + Integer.toString(b[3]);
-
+        x = b[0] + "." + b[1] + "." + b[2] + "." + b[3];
         return x;
     }
 
@@ -79,9 +77,7 @@ public class DataUtils {
             }
         }
         int last = (a + b) % 10;
-        if (last == 0) {
-            last = 0;
-        } else {
+        if (last != 0) {
             last = 10 - last;
         }
         return input + last;
@@ -90,7 +86,7 @@ public class DataUtils {
     public static String getImsi() {
         // 460022535025034
         String title = "4600";
-        int second = 0;
+        int second;
         do {
             second = new Random().nextInt(8);
         } while (second == 4);
@@ -102,7 +98,7 @@ public class DataUtils {
     public static String getMac() {
         char[] char1 = "abcdef".toCharArray();
         char[] char2 = "0123456789".toCharArray();
-        StringBuffer mBuffer = new StringBuffer();
+        StringBuilder mBuffer = new StringBuilder();
         for (int i = 0; i < 6; i++) {
             int t = new Random().nextInt(char1.length);
             int y = new Random().nextInt(char2.length);
@@ -123,7 +119,7 @@ public class DataUtils {
     public static String getRandomString(int length) {
         String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         Random random = new Random();
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i++) {
             int number = random.nextInt(62);
             sb.append(str.charAt(number));
@@ -133,12 +129,9 @@ public class DataUtils {
 
     public static String getEmail(int lMin, int lMax) {
         String base = "abcdefghijklmnopqrstuvwxyz0123456789";
-
         String[] email_suffix = "@gmail.com,@yahoo.com,@msn.com,@hotmail.com,@aol.com,@ask.com,@live.com,@qq.com,@0355.net,@163.com,@163.net,@263.net,@3721.net,@yeah.net,@googlemail.com,@126.com,@sina.com,@sohu.com,@yahoo.com.cn".split(",");
-
-
         int length = (int) (Math.random() * (lMax - lMin + 1) + lMin);
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < length; i++) {
             int number = (int) (Math.random() * base.length());
             sb.append(base.charAt(number));
