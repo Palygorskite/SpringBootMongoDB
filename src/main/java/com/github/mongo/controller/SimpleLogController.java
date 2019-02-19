@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 
 /**
@@ -30,7 +31,7 @@ public class SimpleLogController {
     @Resource
     private SimpleLogRepository repository;
 
-    @GetMapping("/simplelog")
+    @GetMapping("/simple")
     public Page<SimpleLogDO> get(@PageableDefault(size = 4, page = 1, sort = "id,asc") Pageable pageable) {
         return repository.findAll(pageable);
     }
@@ -41,7 +42,7 @@ public class SimpleLogController {
      * @param simpleLogDTO 需要保存对的对象
      * @return 被保存的对象, 注意 ID
      */
-    @PostMapping("/simplelog")
+    @PostMapping("/simple")
     public SimpleLogDO save(@RequestBody SimpleLogDO simpleLogDTO) {
         return repository.save(simpleLogDTO);
     }
@@ -49,15 +50,19 @@ public class SimpleLogController {
 
     @PostConstruct
     public void init() {
-        for (int i = 0; i < 100; i++) {
+        int num = 100;
+        for (int i = 0; i < num; i++) {
             String data = "data:" + i;
             SimpleLogDO simpleLogDO = new SimpleLogDO();
             simpleLogDO.setMessage(data);
             simpleLogDO.setField(data);
             repository.save(simpleLogDO);
         }
+    }
 
-
+    @PreDestroy
+    public void destroy(){
+        repository.deleteAll();
     }
 
 
