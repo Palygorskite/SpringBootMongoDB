@@ -2,6 +2,7 @@ package com.github.mongo.pojo;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
@@ -35,6 +36,7 @@ import java.util.Date;
 @CompoundIndexes({
     @CompoundIndex(name = "index", def = "{'message':1,'field':1}")
 })
+@JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class SimpleLogDO {
 
     @Id

@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
+import java.util.concurrent.Future;
 
 /**
  * <p>
@@ -36,6 +38,12 @@ public class SimpleLogController {
         return repository.findAll(pageable);
     }
 
+    @GetMapping("/simple/{id}")
+    public Future<SimpleLogDO> getAsync(@PathVariable String id) {
+        return repository.findSimpleLogDOById(id);
+    }
+
+
     /**
      * 在 SpringDataJPA 中如果传入的对象 id 为空则为新增对象,如果 id 不为空 则为更新对象
      *
@@ -53,6 +61,7 @@ public class SimpleLogController {
         for (int i = 0; i < num; i++) {
             String data = "data:" + i;
             SimpleLogDO simpleLogDO = new SimpleLogDO();
+            simpleLogDO.setId(i + "");
             simpleLogDO.setMessage(data);
             simpleLogDO.setField(data);
             repository.save(simpleLogDO);
@@ -60,7 +69,7 @@ public class SimpleLogController {
     }
 
     @PreDestroy
-    public void destroy(){
+    public void destroy() {
         repository.deleteAll();
     }
 

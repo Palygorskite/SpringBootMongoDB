@@ -2,6 +2,9 @@ package com.github.mongo.repository;
 
 import com.github.mongo.pojo.SimpleLogDO;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.scheduling.annotation.Async;
+
+import java.util.concurrent.Future;
 
 /**
  * <p>
@@ -17,5 +20,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface SimpleLogRepository extends PagingAndSortingRepository<SimpleLogDO, String> {
 
+
+    @Async
+    Future<SimpleLogDO> findSimpleLogDOById(String id);
 
 }
